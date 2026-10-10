@@ -1,0 +1,1 @@
+select physicalexamid as rid,patientunitstayid as stay_id,physicalexamoffset as entry,physicalexampath as label,physicalexamvalue as value from eicu_icu.physicalexam where patientunitstayid=any(%s) and lower(physicalexampath) ~ '(airway|resp mode)';

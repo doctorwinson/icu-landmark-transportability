@@ -1,0 +1,42 @@
+project:
+  window_dataset_path: data/amended_cohort_20261006/study1_bdmcc24_dataset.parquet
+  external_dataset_path: data/amended_cohort_20261006/study1_eicu_bdmcc24_dataset.parquet
+  output_dir: analysis/rebuild_20261006/results
+
+study:
+  id_column: stay_id
+  target: composite_deterioration_7d
+  window_hours: 24
+  train_fraction: 0.70
+  valid_fraction: 0.15
+
+features:
+  whitelist: ../feature_whitelist.json
+  categorical: [gender, race]
+
+models:
+  logistic_regression:
+    maxit: 2000
+    class_weight: balanced
+  xgboost:
+    nrounds: 500
+    max_depth: 4
+    eta: 0.05
+    subsample: 0.80
+    colsample_bytree: 0.80
+    lambda: 1.0
+  tuning:
+    n_candidates: 64
+    early_stopping_rounds: 50
+    seed: 20261006
+    max_shap_samples: 823
+    search_space:
+      nrounds: [200, 400, 800]
+      max_depth: [2, 3, 4]
+      eta: [0.03, 0.05, 0.08]
+      min_child_weight: [1, 5, 10]
+      subsample: [0.70, 0.85]
+      colsample_bytree: [0.70, 0.85]
+      lambda: [1.0, 3.0, 5.0]
+      alpha: [0.0, 0.5]
+      gamma: [0.0, 0.1]

@@ -1,0 +1,1 @@
+select nursecareid as rid,patientunitstayid as stay_id,nursecareoffset as obs,nursecareentryoffset as entry,cellattributevalue as value from eicu_icu.nursecare where patientunitstayid=any(%s) and (lower(trim(celllabel))='airway type' or lower(trim(cellattribute))='airway type');

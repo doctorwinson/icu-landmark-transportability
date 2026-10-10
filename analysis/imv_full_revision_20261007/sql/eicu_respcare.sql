@@ -1,0 +1,1 @@
+select respcareid as rid,patientunitstayid as stay_id,respcarestatusoffset as entry,airwaytype as value,ventstartoffset,ventendoffset,priorventstartoffset,priorventendoffset from eicu_icu.respiratorycare where patientunitstayid=any(%s);

@@ -1,0 +1,5 @@
+# Direct Python dependencies. This is not a frozen reproduction environment.
+numpy
+pandas
+pyarrow
+psycopg2-binary

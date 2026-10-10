@@ -1,0 +1,1 @@
+select nursingchartid as rid,patientunitstayid as stay_id,nursingchartoffset as obs,nursingchartentryoffset as entry,nursingchartvalue as value from eicu_icu.nursecharting where patientunitstayid=any(%s) and lower(trim(nursingchartcelltypevallabel))='o2 admin device';

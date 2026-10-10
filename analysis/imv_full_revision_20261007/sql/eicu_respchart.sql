@@ -1,0 +1,1 @@
+select respchartid as rid,patientunitstayid as stay_id,respchartoffset as obs,respchartentryoffset as entry,respchartvaluelabel as label,respchartvalue as value from eicu_icu.respiratorycharting where patientunitstayid=any(%s) and lower(respchartvaluelabel) ~ '(mode|placement|airway|device)';

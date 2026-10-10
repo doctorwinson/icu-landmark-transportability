@@ -1,0 +1,1 @@
+select treatmentid as rid,patientunitstayid as stay_id,treatmentoffset as entry,treatmentstring as value from eicu_icu.treatment where patientunitstayid=any(%s) and lower(treatmentstring) ~ '(ventilat|intubat)';
